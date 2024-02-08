@@ -47,7 +47,7 @@ def get_config():
 
     parser.add_argument("--mode", type=str, default="transfer", choices=["unsup", "semisup", "transfer"])
     parser.add_argument("--dataset_name", type=str, default="ZINC") # ZINC or PPI_unsup
-    parser.add_argument('--ft_dataset', type=str, default = 'bbbp')
+    parser.add_argument('--ft_dataset', type=str, default = 'bace')
     parser.add_argument("--linear", type=str_to_bool, default=True)
     
     # for subgraph structure
