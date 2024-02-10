@@ -47,7 +47,7 @@ def get_config():
 
     parser.add_argument("--mode", type=str, default="transfer", choices=["unsup", "semisup", "transfer"])
     parser.add_argument("--dataset_name", type=str, default="ZINC") # ZINC or PPI_unsup
-    parser.add_argument('--ft_dataset', type=str, default = 'bace')
+    parser.add_argument('--ft_dataset', type=str, default = 'bbbp')
     parser.add_argument("--linear", type=str_to_bool, default=True)
     
     # for subgraph structure
@@ -504,12 +504,16 @@ def main():
     optimizer = Adam(params_for_optimizer, lr=0.01)
     
 
+    ft_model = GNN_graphpred(emb_dim=input_fea_dim, hidden_channels=256, num_tasks=num_tasks, edge_dim=num_edge_features)
+    ft_model.to(device)
+
 
     ################################# Training and tesing #################################
     # training
     print("-"*40+f"Starting"+"-"*40)
     # print_memory_usage()
     best_auc = 0
+    
     with tqdm(total=epochs, desc='(T)') as pbar:
         for epoch in range(1, epochs+1):
             # pre train
@@ -520,10 +524,8 @@ def main():
             #                          par_id=args.par_id)
 
             # fine tune
-            ft_model = GNN_graphpred(emb_dim=input_fea_dim, hidden_channels=256, num_tasks=num_tasks, edge_dim=num_edge_features)
             ft_model.gnn.load_state_dict(encoder_model.graph_node_encoder.state_dict())
             ft_model.gnn.to(device)
-            ft_model.to(device)
             model_param_group = []
             model_param_group.append({"params": ft_model.gnn.parameters()})
             model_param_group.append({"params": ft_model.graph_pred_linear.parameters()})
