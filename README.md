@@ -9,7 +9,7 @@
 
 This is the code for "Community-Invariant Graph Contrastive Learning" (`CI-GCL`).
 CI-GCL adopt learnable data augmentation with Community-Invariant constraint on both topology and features. 
-And all these parts are jointly optimized to make sure the augmentation schemes can benefit from contrastive loss, CI constraints and downstream classifiers (semi-supervised).
+And all these parts are jointly optimized to make sure the augmentation schemes can benefit from contrastive loss, CI constraints and downstream classifiers.
 
 ## Requirement
 
@@ -41,15 +41,7 @@ python graph_classification.py --dataset_name ${dataset_name} --gpu ${gpu}
 `${dataset_name}` is the dataset name (please refer to [TU dataset](https://chrsmrrs.github.io/datasets/docs/datasets/)), `${gpu}` is the lanched GPU ID
 
 
-### Launch graph classification in semi-supervised setting
-First pretrain the dataset
-```python
-python graph_classification_semi_pretrain.py --dataset_name ${dataset_name}
-```
-Then, finetune it
-```python
-python graph_classification_semi_finetune.py --dataset_name ${dataset_name}
-```
+
 
 
 ### Launch graph classification in transfer learning setting
