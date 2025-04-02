@@ -66,3 +66,24 @@ And randomly add gaussian noise to `[0.05, 0.1, 0.15, 0.2, 0.25, 0.3]` positions
 python robustness_check.py --dataset_name ${dataset_name}
 python robustness_check_feature.py --dataset_name ${dataset_name}
 ```
+
+## Performance
+![Performance](./CIGCL_unsup.jpg)
+
+
+## Datasets
+- TU datasets: https://chrsmrrs.github.io/datasets/
+- OGB datasets: https://ogb.stanford.edu/docs/dataset_overview/
+- chemistry dataset and biology dataset: https://snap.stanford.edu/gnn-pretrain/
+
+
+## Citation
+```
+@inproceedings{tan2024community,
+  title={Community-invariant graph contrastive learning},
+  author={Tan, Shiyin and Li, Dongyuan and Jiang, Renhe and Zhang, Ying and Okumura, Manabu},
+  booktitle={Proceedings of the 41st International Conference on Machine Learning},
+  pages={47579--47606},
+  year={2024}
+}
+```
